@@ -3,10 +3,11 @@ import { TokenData } from 'state/tokens/reducer'
 import { useFetchedTokenDatas } from 'data/tokens/tokenData'
 import gql from 'graphql-tag'
 import { useState, useEffect, useMemo } from 'react'
-import { client } from 'apollo/client'
+// import { client } from 'apollo/client'
 import { usePoolDatas, useAllPoolData } from 'state/pools/hooks'
 import { PoolData } from 'state/pools/reducer'
 import { notEmpty, escapeRegExp } from 'utils'
+import { useClients } from '../../state/application/hooks'
 
 export const TOKEN_SEARCH = gql`
   query tokens($value: String, $id: String) {
@@ -143,6 +144,8 @@ export function useFetchSearchResults(
   const [tokenData, setTokenData] = useState<TokenRes | undefined>()
   const [poolData, setPoolData] = useState<PoolRes | undefined>()
 
+  const { dataClient } = useClients()
+  const client = dataClient
   // fetch data based on search input
   useEffect(() => {
     async function fetch() {

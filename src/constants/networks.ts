@@ -13,6 +13,7 @@ export enum SupportedNetwork {
   POLYGON,
   CELO,
   BNB,
+  POLYGON_MUMBAI,
 }
 
 export type NetworkInfo = {
@@ -95,6 +96,18 @@ export const BNBNetworkInfo: NetworkInfo = {
   blurb: '',
 }
 
+export const MumbaiNetworkInfo: NetworkInfo = {
+  chainId: SupportedChainId.POLYGON_MUMBAI,
+  id: SupportedNetwork.POLYGON_MUMBAI,
+  route: 'polygon-mumbai',
+  name: 'Polygon Mumbai',
+  bgColor: '#8247e5',
+  primaryColor: '#8247e5',
+  secondaryColor: '#FB7876',
+  imageURL: POLYGON_LOGO_URL,
+  blurb: '',
+}
+
 export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   EthereumNetworkInfo,
   PolygonNetworkInfo,
@@ -102,4 +115,5 @@ export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   ArbitrumNetworkInfo,
   CeloNetworkInfo,
   BNBNetworkInfo,
+  MumbaiNetworkInfo,
 ]

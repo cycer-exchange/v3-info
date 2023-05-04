@@ -262,3 +262,46 @@ export const celoBlockClient = new ApolloClient({
     },
   },
 })
+
+export const polygonMumbaiClient = new ApolloClient({
+  uri: 'https://api.thegraph.com/subgraphs/name/hamzabhatti125/niswapv3mumbai',
+  cache: new InMemoryCache({
+    typePolicies: {
+      Token: {
+        // Singleton types that have no identifying field can use an empty
+        // array for their keyFields.
+        keyFields: false,
+      },
+      Pool: {
+        // Singleton types that have no identifying field can use an empty
+        // array for their keyFields.
+        keyFields: false,
+      },
+    },
+  }),
+  queryDeduplication: true,
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: 'no-cache',
+    },
+    query: {
+      fetchPolicy: 'no-cache',
+      errorPolicy: 'all',
+    },
+  },
+})
+
+export const polygonMumbaiBlockClient = new ApolloClient({
+  uri: 'https://api.thegraph.com/subgraphs/name/decentrastates/blocks-matic-mumbai',
+  cache: new InMemoryCache(),
+  queryDeduplication: true,
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: 'cache-first',
+    },
+    query: {
+      fetchPolicy: 'cache-first',
+      errorPolicy: 'all',
+    },
+  },
+})
